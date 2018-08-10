@@ -18,4 +18,4 @@ cargo run
 ## I don't use Linux
 
 `apt-get` should be the only difference with Windows and macOS.
-Please refer to [Emscripten's official website]: http://kripken.github.io/emscripten-site/ to learn how to install Emscripten on your computer.
+Please refer to [Emscripten's official website](http://kripken.github.io/emscripten-site/) to learn how to install Emscripten on your computer.
