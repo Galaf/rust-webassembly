@@ -2,5 +2,6 @@
 name = "rust-webassembly"
 version = "0.1.0"
 authors = ["Christophe Labonne <labonne@asahinet.com>"]
+crate-type = ["cdylib"]
 
 [dependencies]
