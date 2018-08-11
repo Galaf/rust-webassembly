@@ -1,3 +1,4 @@
 WebAssembly.instantiateStreaming(fetch("/wa/rwa.min.wasm")).then(results => {
-  alert(results.instance.exports.add_one(41));
+  let fill = results.instance.exports.fill;
+  alert(fill());
 });

@@ -1,5 +1,6 @@
+use std::ffi::CString;
 use std::mem;
-use std::os::raw::c_void;
+use std::os::raw::{c_char, c_void};
 
 #[no_mangle]
 pub extern "C" fn alloc(size: usize) -> *mut c_void {
@@ -17,6 +18,6 @@ pub extern "C" fn dealloc(ptr: *mut c_void, capacity: usize) {
 }
 
 #[no_mangle]
-pub extern "C" fn add_one(x: i32) -> i32 {
-    x + 1
+pub extern "C" fn fill() -> *mut c_char {
+    CString::new("TODO").unwrap().into_raw()
 }
