@@ -6,16 +6,16 @@ mod mandelbrot;
 
 #[no_mangle]
 pub extern "C" fn alloc(size: usize) -> *mut c_void {
-    let mut buf = Vec::with_capacity(size);
-    let ptr = buf.as_mut_ptr();
-    mem::forget(buf);
-    return ptr as *mut c_void;
+    let mut buffer = Vec::with_capacity(size);
+    let pointer = buffer.as_mut_ptr();
+    mem::forget(buffer);
+    return pointer as *mut c_void;
 }
 
 #[no_mangle]
-pub extern "C" fn dealloc(ptr: *mut c_void, capacity: usize) {
+pub extern "C" fn dealloc(pointer: *mut c_void, capacity: usize) {
     unsafe {
-        let _buf = Vec::from_raw_parts(ptr, 0, capacity);
+        let _buffer = Vec::from_raw_parts(pointer, 0, capacity);
     }
 }
 
