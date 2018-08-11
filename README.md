@@ -31,3 +31,5 @@ cd rust-webassembly
 cargo +nightly build
 cargo +nightly run
 ```
+
+Go to [localhost:8000](http://localhost:8000) and have a look!
