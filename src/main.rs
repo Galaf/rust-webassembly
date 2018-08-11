@@ -11,9 +11,6 @@ use rocket::response::NamedFile;
 
 #[get("/")]
 fn index() -> io::Result<NamedFile> {
-    let path = env::current_dir()?;
-    println!("cwd = {:?}", path.display());
-    println!("Path = {:?}", Path::new("./websrc").as_os_str());
     NamedFile::open("./websrc/index.html")
 }
 
