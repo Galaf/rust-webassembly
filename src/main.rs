@@ -3,7 +3,6 @@
 
 extern crate rocket;
 
-use std::env;
 use std::io;
 use std::path::{Path, PathBuf};
 
