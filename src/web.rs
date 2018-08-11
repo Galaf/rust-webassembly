@@ -22,7 +22,7 @@ pub extern "C" fn dealloc(ptr: *mut c_void, capacity: usize) {
 #[no_mangle]
 pub extern "C" fn fill(pointer: *mut u8, max_width: usize, max_height: usize) -> *mut c_char {
     let canvas = mandelbrot::draw(max_width, max_height);
-    let s = format!("{?}", canvas);
+    let s = format!("lol");
 
     return CString::new(s).unwrap().into_raw();
 }
