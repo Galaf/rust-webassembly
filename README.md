@@ -27,7 +27,7 @@ cargo install --git https://github.com/alexcrichton/wasm-gc
 ```
 git clone https://github.com/Galaf/rust-webassembly.git
 cd rust-webassembly
-./make-wasm
+./make-wasm.sh
 cargo +nightly build
 cargo +nightly run
 ```
