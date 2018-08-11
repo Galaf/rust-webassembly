@@ -1,6 +1,6 @@
-use std::ffi::CString;
 use std::mem;
-use std::os::raw::{c_char, c_void};
+use std::os::raw::c_void;
+use std::slice;
 
 mod mandelbrot;
 
@@ -20,9 +20,16 @@ pub extern "C" fn dealloc(ptr: *mut c_void, capacity: usize) {
 }
 
 #[no_mangle]
-pub extern "C" fn fill(pointer: *mut u8, max_width: usize, max_height: usize) -> *mut c_char {
-    let canvas = mandelbrot::draw(max_width, max_height);
-    let s = format!("lol");
+pub extern "C" fn fill(pointer: *mut u8, max_width: usize, max_height: usize) {
+    let byte_size = max_width * max_height * 4;
+    let s1 = unsafe { slice::from_raw_parts_mut(pointer, byte_size) };
 
-    return CString::new(s).unwrap().into_raw();
+    let canvas = mandelbrot::draw(max_width, max_height);
+
+    for i in 0..byte_size {
+        let x = i / 4 % max_width;
+        let y = 1 / 4 / max_width;
+
+        s1[i] = canvas[x][y] as u8;
+    }
 }
