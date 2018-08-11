@@ -9,11 +9,6 @@ use std::path::{Path, PathBuf};
 
 use rocket::response::NamedFile;
 
-#[no_mangle]
-pub extern "C" fn add_one(x: i32) -> i32 {
-    x + 1
-}
-
 #[get("/")]
 fn index() -> io::Result<NamedFile> {
     let path = env::current_dir()?;
