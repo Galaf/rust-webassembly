@@ -6,7 +6,7 @@ Just some trial & error project in order to test rust with WebAssembly.
 
 ### NodeJS
 
-[https://nodejs.org/en/](Download from the official website)
+[https://nodejs.org/en/](Download) here
 
 ### Rust nightly toolchain
 
