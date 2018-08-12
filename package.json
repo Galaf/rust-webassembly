@@ -1,0 +1,10 @@
+{
+  "scripts": {
+    "serve": "webpack-serve --content websrc"
+  },
+  "devDependencies": {
+    "webpack": "^4.11.1",
+    "webpack-cli": "^2.0.10",
+    "webpack-serve": "2.0.2"
+  }
+}

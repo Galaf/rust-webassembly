@@ -1,8 +1,20 @@
+#![feature(use_extern_macros)]
+
+extern crate wasm_bindgen;
+
 use std::mem;
 use std::os::raw::c_void;
 use std::slice;
 
+use wasm_bindgen::prelude::*;
+
 mod mandelbrot;
+
+#[wasm_bindgen]
+extern "C" {
+    #[wasm_bindgen(js_namespace = console)]
+    fn log(s: &str);
+}
 
 #[no_mangle]
 pub extern "C" fn alloc(size: usize) -> *mut c_void {
@@ -19,8 +31,9 @@ pub extern "C" fn dealloc(pointer: *mut c_void, capacity: usize) {
     }
 }
 
-#[no_mangle]
+#[wasm_bindgen]
 pub extern "C" fn fill(pointer: *mut u8, max_width: usize, max_height: usize) {
+    log("fill start");
     let byte_size = max_width * max_height * 4;
     let s1 = unsafe { slice::from_raw_parts_mut(pointer, byte_size) };
 
