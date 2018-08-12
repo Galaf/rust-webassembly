@@ -4,6 +4,10 @@ Just some trial & error project in order to test rust with WebAssembly.
 
 ## Dependencies
 
+### NodeJS
+
+For development only.
+
 ### Rust nightly toolchain
 
 ```
@@ -16,10 +20,10 @@ rustup toolchain install nightly
 rustup target add wasm32-unknown-unknown --toolchain nightly
 ```
 
-### wasm-gc
+### wasm-bindgen
 
 ```
-cargo install --git https://github.com/alexcrichton/wasm-gc
+cargo +nightly install wasm-bindgen-cli
 ```
 
 ## To run:
@@ -27,9 +31,7 @@ cargo install --git https://github.com/alexcrichton/wasm-gc
 ```
 git clone https://github.com/Galaf/rust-webassembly.git
 cd rust-webassembly
-./make-wasm.sh
-cargo +nightly build
-cargo +nightly run
+./build.sh
 ```
 
-Go to [localhost:8000](http://localhost:8000) and have a look!
+Go to [localhost:8080](http://localhost:8080) and have a look!

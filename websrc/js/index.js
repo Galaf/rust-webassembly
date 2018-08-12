@@ -1,3 +1,3 @@
-const rust = import("../wa/rust_webassembly");
+const rust = import("./rust_webassembly");
 
-rust.then(m => console.log(m));
+rust.then(m => m.run());
