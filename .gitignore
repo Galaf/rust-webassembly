@@ -10,3 +10,13 @@ Cargo.lock
 **/*.rs.bk
 
 **/*.code-workspace
+
+node_modules
+package-lock.json
+npm-shrinkwrap.json
+yarn.lock
+*.d.ts
+
+rust_webassembly.js
+rust_webassembly.js
+rust_webassembly.wasm
