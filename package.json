@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "serve": "webpack-serve --content websrc"
+    "serve": "webpack-serve --content ./websrc/"
   },
   "devDependencies": {
     "webpack": "^4.11.1",

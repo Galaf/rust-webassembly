@@ -1,3 +1,7 @@
-const rust = import("./rust_webassembly");
+const { run } = wasm_bindgen;
 
-rust.then(m => m.run());
+function start() {
+  run();
+}
+
+wasm_bindgen("../wa/rust_webassembly_bg.wasm").then(start);
