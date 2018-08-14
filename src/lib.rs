@@ -1,5 +1,4 @@
 #![feature(use_extern_macros)]
-#![feature(vec_resize_default)]
 
 extern crate wasm_bindgen;
 

@@ -2,7 +2,7 @@ fn initialize_vector(width: u32, height: u32) -> Vec<u8> {
     let max_capacity: usize = (4 * width * height) as usize;
     let mut v: Vec<u8> = Vec::with_capacity(max_capacity);
 
-    v.resize_default(max_capacity);
+    v.resize(max_capacity, 0);
 
     return v;
 }
