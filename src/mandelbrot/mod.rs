@@ -1,3 +1,5 @@
+use Configuration;
+
 fn initialize_vector(width: u32, height: u32) -> Vec<u8> {
     let max_capacity: usize = (4 * width * height) as usize;
     let mut v: Vec<u8> = Vec::with_capacity(max_capacity);
@@ -37,14 +39,17 @@ fn fill_rgb(data: &mut Vec<u8>, position: usize, r: u8, g: u8, b: u8) {
     data[position + 3] = 255;
 }
 
-pub fn get_mandelbrot_set(width: u32, height: u32) -> Vec<u8> {
+pub fn get_mandelbrot_set(configuration: &Configuration) -> Vec<u8> {
+    let iterations: usize = configuration.iterations;
+    let width = configuration.width;
+    let height = configuration.height;
+
     let mut data: Vec<u8> = initialize_vector(width, height);
 
     let xmin: f64 = -2.0;
     let xmax: f64 = 1.0;
     let ymin: f64 = -1.0;
     let ymax: f64 = 1.0;
-    let iterations: usize = 3000;
 
     for ix in 0..width {
         for iy in 0..height {
@@ -58,12 +63,16 @@ pub fn get_mandelbrot_set(width: u32, height: u32) -> Vec<u8> {
             } else {
                 let c: u8 = (3 as f64 * (i as f64).ln() / (iterations as f64 - 1.0).ln()) as u8;
 
-                if c < 1 {
-                    fill_rgb(&mut data, ppos, 255 * c, 0, 0);
-                } else if c < 2 {
-                    fill_rgb(&mut data, ppos, 255, 255 * (c - 1), 0);
-                } else {
-                    fill_rgb(&mut data, ppos, 255, 255, 255 * (c - 2));
+                match c {
+                    c if c < 1 => {
+                        fill_rgb(&mut data, ppos, 255 * c, 0, 0);
+                    },
+                    c if c < 2 => {
+                        fill_rgb(&mut data, ppos, 255, 255 * (c - 1), 0);
+                    },
+                    _ => {
+                        fill_rgb(&mut data, ppos, 255, 255, 255 * (c - 2));
+                    },
                 }
             }
         }
