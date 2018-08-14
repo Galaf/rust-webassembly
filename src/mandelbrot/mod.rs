@@ -16,7 +16,7 @@ fn iterate_mandel(cx: f64, cy: f64, iterations: usize) -> usize {
     let mut yy: f64 = 0.0;
     let mut xy: f64;
 
-    let mut i = iterations;
+    let mut i: usize = iterations;
 
     while i > 0 && xx + yy <= 4.0 {
         xy = x * y;
@@ -42,9 +42,9 @@ pub fn get_mandelbrot_set(width: u32, height: u32) -> Vec<u8> {
 
     for ix in 0..width {
         for iy in 0..height {
-            let x = xmin + (xmax - xmin) * ix as f64 / (width - 1) as f64;
-            let y = ymin + (ymax - ymin) * iy as f64 / (height - 1) as f64;
-            let i = iterate_mandel(x, y, iterations);
+            let x: f64 = xmin + (xmax - xmin) * ix as f64 / (width - 1) as f64;
+            let y: f64 = ymin + (ymax - ymin) * iy as f64 / (height - 1) as f64;
+            let i: usize = iterate_mandel(x, y, iterations);
             let ppos: usize = (4 * (width * iy + ix)) as usize;
 
             if i > iterations {
@@ -52,20 +52,20 @@ pub fn get_mandelbrot_set(width: u32, height: u32) -> Vec<u8> {
                 data[ppos + 1] = 0;
                 data[ppos + 2] = 0;
             } else {
-                let c = 3 as f64 * (i as f64).ln() / (iterations as f64 - 1.0).ln();
+                let c: u8 = (3 as f64 * (i as f64).ln() / (iterations as f64 - 1.0).ln()) as u8;
 
-                if c < 1.0 {
-                    data[ppos] = 255 * c as u8;
+                if c < 1 {
+                    data[ppos] = 255 * c;
                     data[ppos + 1] = 0;
                     data[ppos + 2] = 0;
-                } else if c < 2.0 {
+                } else if c < 2 {
                     data[ppos] = 255;
-                    data[ppos + 1] = 255 * (c as u8 - 1);
+                    data[ppos + 1] = 255 * (c - 1);
                     data[ppos + 2] = 0;
                 } else {
                     data[ppos] = 255;
                     data[ppos + 1] = 255;
-                    data[ppos + 2] = 255 * (c as u8 - 2);
+                    data[ppos + 2] = 255 * (c - 2);
                 }
             }
 
