@@ -29,6 +29,14 @@ fn iterate_mandel(cx: f64, cy: f64, iterations: usize) -> usize {
     return iterations - i;
 }
 
+#[inline]
+fn fill_rgb(data: &mut Vec<u8>, position: usize, r: u8, g: u8, b: u8) {
+    data[position] = r;
+    data[position + 1] = g;
+    data[position + 2] = b;
+    data[position + 3] = 255;
+}
+
 pub fn get_mandelbrot_set(width: u32, height: u32) -> Vec<u8> {
     let mut data: Vec<u8> = initialize_vector(width, height);
 
@@ -36,7 +44,7 @@ pub fn get_mandelbrot_set(width: u32, height: u32) -> Vec<u8> {
     let xmax: f64 = 1.0;
     let ymin: f64 = -1.0;
     let ymax: f64 = 1.0;
-    let iterations: usize = 1000;
+    let iterations: usize = 3000;
 
     for ix in 0..width {
         for iy in 0..height {
@@ -46,28 +54,18 @@ pub fn get_mandelbrot_set(width: u32, height: u32) -> Vec<u8> {
             let ppos: usize = (4 * (width * iy + ix)) as usize;
 
             if i > iterations {
-                data[ppos] = 0;
-                data[ppos + 1] = 0;
-                data[ppos + 2] = 0;
+                fill_rgb(&mut data, ppos, 0, 0, 0);
             } else {
                 let c: u8 = (3 as f64 * (i as f64).ln() / (iterations as f64 - 1.0).ln()) as u8;
 
                 if c < 1 {
-                    data[ppos] = 255 * c;
-                    data[ppos + 1] = 0;
-                    data[ppos + 2] = 0;
+                    fill_rgb(&mut data, ppos, 255 * c, 0, 0);
                 } else if c < 2 {
-                    data[ppos] = 255;
-                    data[ppos + 1] = 255 * (c - 1);
-                    data[ppos + 2] = 0;
+                    fill_rgb(&mut data, ppos, 255, 255 * (c - 1), 0);
                 } else {
-                    data[ppos] = 255;
-                    data[ppos + 1] = 255;
-                    data[ppos + 2] = 255 * (c - 2);
+                    fill_rgb(&mut data, ppos, 255, 255, 255 * (c - 2));
                 }
             }
-
-            data[ppos + 3] = 255;
         }
     }
 
