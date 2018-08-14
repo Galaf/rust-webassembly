@@ -1,6 +1,7 @@
 #![feature(use_extern_macros)]
 
 extern crate wasm_bindgen;
+extern crate rand;
 
 use wasm_bindgen::prelude::*;
 
@@ -33,16 +34,23 @@ extern "C" {
 
 #[wasm_bindgen]
 extern "C" {
-#[wasm_bindgen(js_namespace = console)]
+    #[wasm_bindgen(js_namespace = console)]
     fn log(s: &str);
 }
 
 #[wasm_bindgen]
 pub  fn draw(ctx: &CanvasRenderingContext2D, width: u32, height: u32) {
-    log("fill start");
+    log("Starting draw");
+    let size_info = format!("Width = {}; Height = {}", width, height);
+    log(&size_info);
 
     let data = get_mandelbrot_set(width, height);
+    let gen_info = format!("Generated {} numbers", data.len());
+    log(&gen_info);
+
     let uint8_array = Uint8ClampedArray::new(&data);
+
+    log("uint8 array generated");
 
     ctx.put_image_data(&ImageData::new(&uint8_array, width, height), 0, 0);
 }
