@@ -1,7 +1,10 @@
 use Configuration;
 
+const RGBA_PIXELS_BYTE_COUNT: usize = 4;
+const RGBA_FULL_OPAQUE: u8 = 255;
+
 fn initialize_vector(width: u32, height: u32) -> Vec<u8> {
-    let max_capacity: usize = (4 * width * height) as usize;
+    let max_capacity: usize = RGBA_PIXELS_BYTE_COUNT * (width * height) as usize;
     let mut v: Vec<u8> = Vec::with_capacity(max_capacity);
 
     v.resize(max_capacity, 0);
@@ -36,7 +39,7 @@ fn fill_rgb(data: &mut Vec<u8>, position: usize, r: u8, g: u8, b: u8) {
     data[position] = r;
     data[position + 1] = g;
     data[position + 2] = b;
-    data[position + 3] = 255;
+    data[position + 3] = RGBA_FULL_OPAQUE;
 }
 
 pub fn get_mandelbrot_set(configuration: &Configuration) -> Vec<u8> {
