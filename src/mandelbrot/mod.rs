@@ -1,10 +1,8 @@
 fn initialize_vector(width: u32, height: u32) -> Vec<u8> {
-    let mut v = Vec::new();
-    let max_capacity = 4 * width * height;
+    let max_capacity: usize = (4 * width * height) as usize;
+    let mut v = Vec::with_capacity(max_capacity);
 
-    for _ in 0..max_capacity {
-        v.push(200);
-    }
+    v.resize_default(max_capacity);
 
     return v;
 }
