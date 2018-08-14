@@ -12,7 +12,7 @@ use mandelbrot::get_mandelbrot_set;
 #[derive(Deserialize)]
 pub struct Configuration {
     iterations: usize,
-    width: u32, 
+    width: u32,
     height: u32,
 }
 
