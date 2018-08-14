@@ -1,7 +1,7 @@
 #![feature(use_extern_macros)]
 
 extern crate wasm_bindgen;
-extern crate rand;
+extern crate num_complex;
 
 use wasm_bindgen::prelude::*;
 
@@ -47,6 +47,7 @@ pub  fn draw(ctx: &CanvasRenderingContext2D, width: u32, height: u32) {
     let data = get_mandelbrot_set(width, height);
     let gen_info = format!("Generated {} numbers", data.len());
     log(&gen_info);
+
 
     let uint8_array = Uint8ClampedArray::new(&data);
 
