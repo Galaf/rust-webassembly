@@ -1,7 +1,6 @@
 #![feature(use_extern_macros)]
 
 extern crate wasm_bindgen;
-extern crate num_complex;
 
 use wasm_bindgen::prelude::*;
 
