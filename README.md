@@ -4,9 +4,11 @@ Just some trial & error project in order to test rust with WebAssembly.
 
 ## Dependencies
 
-### NodeJS
+### basic-http-server
 
-[Download](https://nodejs.org/en/) here
+```
+cargo install basic-http-server
+```
 
 ### Rust nightly toolchain
 
@@ -34,4 +36,4 @@ cd rust-webassembly
 ./build.sh
 ```
 
-Go to [localhost:8080](http://localhost:8080) and have a look!
+Go to [localhost:4000](http://localhost:4000) and have a look!
