@@ -9,36 +9,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 </head>
 
-<link rel="stylesheet" href="css/bootstrap.min.css" />
-<link rel="stylesheet" href="css/bundle.css" />
+<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" href="/css/bundle.css" />
 
-<body class="text-center">
-    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+<body>
 
-        <header class="masthead mb-auto">
-            <div class="inner">
-                <h3 class="masthead-brand">
-                    Mandelbrot Set with Rust and WebAssembly
-                </h3>
-            </div>
-        </header>
+    <header>
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+            <p class="navbar-brand">
+                Mandelbrot Set with Rust and WebAssembly
+            </p>
+        </nav>
+    </header>
 
-        <main role="main" class="inner cover">
-            <canvas id="screen"></canvas>
-        </main>
+    <main role="main" class="container-fluid">
+        <canvas id="screen"></canvas>
+    </main>
 
-        <footer class="mastfoot mt-auto">
-            <div class="inner">
-                <p>
-                    <a href="https://github.com/Galaf/rust-webassembly" target="_blank" rel="noopener">Christophe LABONNE</a>
-                </p>
-            </div>
-        </footer>
+    <footer class="footer">
+        <div class="container">
+            <span class="text-muted">
+                <a href="https://github.com/Galaf/rust-webassembly" target="_blank" rel="noopener">Christophe LABONNE</a>
+            </span>
+        </div>
+    </footer>
 
     </div>
 
-    <script src="wa/rust_webassembly.js"></script>
-    <script src="js/index.js"></script>
+    <script src="/wa/rust_webassembly.js"></script>
+    <script src="/js/index.js"></script>
 </body>
 
 </html>
