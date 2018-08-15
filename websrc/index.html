@@ -3,24 +3,30 @@
 <html lang="en">
 
 <head>
-    <title>Hello from Rust-Webassembly</title>
+    <title>
+        Mandelbrot Set with Rust and WebAssembly
+    </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 </head>
+
 <link rel="stylesheet" href="css/bootstrap.min.css" />
 <link rel="stylesheet" href="css/bundle.css" />
 
 <body class="text-center">
     <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+
         <header class="masthead mb-auto">
             <div class="inner">
                 <h3 class="masthead-brand">
-                    Julia Set with Rust and WebAssembly
+                    Mandelbrot Set with Rust and WebAssembly
                 </h3>
             </div>
         </header>
+
         <main role="main" class="inner cover">
             <canvas id="screen"></canvas>
         </main>
+
         <footer class="mastfoot mt-auto">
             <div class="inner">
                 <p>
@@ -28,6 +34,7 @@
                 </p>
             </div>
         </footer>
+
     </div>
 
     <script src="wa/rust_webassembly.js"></script>
