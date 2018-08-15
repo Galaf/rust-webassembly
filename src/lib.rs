@@ -11,9 +11,9 @@ use mandelbrot::get_mandelbrot_set;
 
 #[derive(Deserialize)]
 pub struct Configuration {
-    iterations: usize,
-    width: u32,
-    height: u32,
+    pub iterations: usize,
+    pub width: u32,
+    pub height: u32,
 }
 
 #[wasm_bindgen]
@@ -43,7 +43,7 @@ extern "C" {
 #[wasm_bindgen]
 extern "C" {
     #[wasm_bindgen(js_namespace = console)]
-    fn log(s: &str);
+    pub fn log(s: &str);
 }
 
 #[wasm_bindgen]
@@ -51,13 +51,10 @@ pub  fn draw(context: &CanvasRenderingContext2D, conf_js: &JsValue) {
     let configuration: Configuration = conf_js.into_serde().unwrap();
 
     log("Starting draw");
-    let size_info = format!("Width = {}; Height = {}", configuration.width, configuration.height);
-    log(&size_info);
+    log(&format!("Width = {}; Height = {}", configuration.width, configuration.height));
 
     let data = get_mandelbrot_set(&configuration);
-    let gen_info = format!("Generated {} numbers", data.len());
-    log(&gen_info);
-
+    log(&format!("Generated {} numbers", data.len()));
 
     let uint8_array = Uint8ClampedArray::new(&data);
 

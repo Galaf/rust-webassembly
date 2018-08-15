@@ -4,7 +4,7 @@ function run() {
   const canvas = document.getElementById("screen");
   const ctx = canvas.getContext("2d");
   const configuration = {
-    iterations: 1000,
+    iterations: 10000,
     width: canvas.width,
     height: canvas.height,
   };
