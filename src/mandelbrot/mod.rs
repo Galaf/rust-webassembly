@@ -49,15 +49,17 @@ pub fn get_mandelbrot_set(configuration: &Configuration) -> Vec<u8> {
 
     let mut data: Vec<u8> = initialize_vector(width, height);
 
-    let xmin: f64 = -2.0;
+    let xmin: f64 = -1.0;
     let xmax: f64 = 1.0;
     let ymin: f64 = -1.0;
     let ymax: f64 = 1.0;
 
     for ix in 0..width {
         for iy in 0..height {
+            //let x: f64 = width as f64 / (xmax - xmin);
             let x: f64 = xmin + (xmax - xmin) * ix as f64 / (width - 1) as f64;
             let y: f64 = ymin + (ymax - ymin) * iy as f64 / (height - 1) as f64;
+            //let y: f64 = ymin + (ymax - ymin) * iy as f64 / (height - 1) as f64;
             let i: usize = iterate_mandel(x, y, iterations);
             let ppos: usize = (4 * (width * iy + ix)) as usize;
 
