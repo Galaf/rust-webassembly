@@ -19,3 +19,5 @@ yarn.lock
 
 rust_webassembly.js
 **/*.wasm
+
+*~
