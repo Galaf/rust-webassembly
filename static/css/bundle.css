@@ -22,8 +22,12 @@ body {
 -------------------------------------------------- */
 /* Not required for template or sticky footer method. */
 
-body > .container-fluid {
-  padding: 60px 15px 0;
+body > main > .container-fluid {
+    padding-top: 72px;
+  //padding: 60px 0 0;
+  padding-left: 0;
+  padding-right: 0;
+  padding-bottom: 0;
 }
 
 .footer > .container {
@@ -36,6 +40,6 @@ code {
 }
 
 #screen {
-  /* width: 1920px; */
-  /* height: 948px; */
+    width: 100%;
+    height: 872px;
 }

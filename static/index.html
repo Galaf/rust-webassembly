@@ -22,8 +22,27 @@
         </nav>
     </header>
 
-    <main role="main" class="container-fluid">
-        <canvas id="screen"></canvas>
+    <main role="main">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-10">
+            <canvas id="screen"></canvas>
+        </div>
+        <div class="col-lg-2">
+            <h1>Custom</h1>
+            <form>
+                <div class="form-group">
+                    <label for="iterations">Iterations</label>
+                    <input type="range" min="100" max="3000" class="form-control-range" id="iterations">
+                </div>
+
+                <button type="button" class="btn btn-primary" onclick="run()">Generate</button>
+            </form>
+        </div>
+            </div>
+
+        </div>
+
     </main>
 
     <footer class="footer">
