@@ -49,10 +49,10 @@ pub fn get_mandelbrot_set(configuration: &Configuration) -> Vec<u8> {
 
     let mut data: Vec<u8> = initialize_vector(width, height);
 
-    let xmin: f64 = -1.0;
-    let xmax: f64 = 1.0;
-    let ymin: f64 = -1.0;
-    let ymax: f64 = 1.0;
+    let xmin: f64 = configuration.xmin;
+    let xmax: f64 = configuration.xmax;
+    let ymin: f64 = configuration.ymin;
+    let ymax: f64 = configuration.ymax;
 
     for ix in 0..width {
         for iy in 0..height {

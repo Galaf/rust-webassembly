@@ -14,6 +14,10 @@ pub struct Configuration {
     pub iterations: usize,
     pub width: u32,
     pub height: u32,
+    pub xmin: f64,
+    pub xmax: f64,
+    pub ymin: f64,
+    pub ymax: f64,
 }
 
 #[wasm_bindgen]
