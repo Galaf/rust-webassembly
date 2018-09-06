@@ -10,6 +10,16 @@ function getSubmitData() {
   };
 }
 
+function getDefaultValues() {
+  return {
+    iterations: 2000,
+    xmin: -1.0,
+    xmax: 1.0,
+    ymin: -1.0,
+    ymax: 1.0,
+  };
+}
+
 function run() {
   const canvas = document.getElementById("screen");
   const ctx = canvas.getContext("2d");
@@ -29,6 +39,18 @@ function run() {
   console.log(configuration);
 
   draw(ctx, configuration);
+}
+
+function resetForm() {
+  const defaultConf = getDefaultValues();
+
+  document.getElementById("iterations").value = defaultConf.iterations;
+  document.getElementById("xmin").value = defaultConf.xmin;
+  document.getElementById("xmax").value = defaultConf.xmax;
+  document.getElementById("ymin").value = defaultConf.ymin;
+  document.getElementById("ymax").value = defaultConf.ymax;
+
+  run();
 }
 
 (function() {
